@@ -6,7 +6,7 @@ Hem **Terminal (CLI & İnteraktif Menü)** üzerinden hem de **Masaüstü Arayü
 
 ---
 
-## ✨ Temel Özellikler
+## Temel Özellikler
 
 1. **🤖 Yapay Zeka (AI) ve İçerik Kökeni (Provenance) Tespiti**
    - **C2PA / JUMBF (`JPEG APP11 0xFFEB`, `PNG caBX`, `WebP C2PA`):**
@@ -24,17 +24,17 @@ Hem **Terminal (CLI & İnteraktif Menü)** üzerinden hem de **Masaüstü Arayü
    - **XMP (`APP1` RDF/XML & PNG `iTXt`):** Dublin Core (`dc:title`, `dc:creator`, `dc:description`, `dc:subject`, `dc:rights`), `xmp:CreatorTool`, `photoshop:Credit` ve `Iptc4xmpExt:DigitalSourceType` alanlarını çözümler.
    - **Teknik & Binary Segment Analizi:** Dosya boyutu, `SHA-256` özeti, çözünürlük, bit derinliği, renk kanalları, chroma subsampling (`4:2:0`, `4:4:4`), sıkıştırma modu (`SOF0 Baseline DCT` / `SOF2 Progressive DCT`) ve tüm binary segment haritasını (`SOI`, `APP0`, `APP11`, `APP13`, `DQT`, `DHT`, `SOS`, `EOI`) listeler.
 
-3. **🧹 Kayıpsız (Lossless) Metadata Silme (Strip)**
+3. ** Kayıpsız (Lossless) Metadata Silme (Strip)**
    - Görsel piksellerini **yeniden sıkıştırmadan (re-encoding yapmadan)** doğrudan binary segment düzeyinde (`APP1`, `APP11`, `APP13`, `COM`, `eXIf`, `caBX`, `tEXt`, `iTXt`) temizlik yapar.
    - Görüntü kalitesinde **%0 kayıp** ile tüm AI etiketlerini, C2PA sertifikalarını, EXIF/IPTC/XMP verilerini kaldırır.
    - Tek bir görseli veya `process/` klasöründeki tüm görselleri tek komutla temizleyebilir; isteğe bağlı `.bak` yedeği alabilir veya sadece seçili kategorileri (ör. yalnızca C2PA/AI etiketlerini) silebilir.
 
-4. **✏️ Mevcut Metadata Alanlarını Düzenleme (Edit)**
+4. ** Mevcut Metadata Alanlarını Düzenleme (Edit)**
    - Görseldeki mevcut **EXIF**, **IPTC**, **XMP**, **JPEG/PNG Yorum (Comment)** ve **C2PA** alanlarını görüntüleyip değiştirmenize, yeni etiket eklemenize veya belirli bir etiketi silmenize olanak tanır.
 
 ---
 
-## 📁 Proje Yapısı
+##  Proje Yapısı
 
 ```text
 metadata/
@@ -47,7 +47,7 @@ metadata/
 
 ---
 
-## 🚀 Kurulum ve Gereksinimler
+##  Kurulum ve Gereksinimler
 
 Proje, harici bir CLI aracına (`exiftool` vb.) ihtiyaç duymadan **Saf Python (Python 3.10+)** ile çalışacak şekilde tasarlanmıştır.
 
@@ -61,7 +61,7 @@ Proje, harici bir CLI aracına (`exiftool` vb.) ihtiyaç duymadan **Saf Python (
 
 ---
 
-## 💻 Kullanım Kılavuzu
+##  Kullanım Kılavuzu
 
 ### 1. Terminalde Hızlı Analiz ve İnteraktif Menü
 
@@ -121,7 +121,7 @@ Bu komut yerel sunucuyu `http://127.0.0.1:8765` adresinde başlatır ve varsayı
 
 ### 3. Komut Satırı (CLI) Alt Komutları
 
-#### 📄 Metadata Görüntüleme (`show`)
+####  Metadata Görüntüleme (`show`)
 ```bash
 # process/ klasöründeki tüm görselleri analiz et ve çık
 python3 app.py show
@@ -133,7 +133,7 @@ python3 app.py show process/a1-wallpaper-f0rf0xsakeffs.jpg
 python3 app.py show process/a1-wallpaper-f0rf0xsakeffs.jpg --json
 ```
 
-#### 🧹 Metadata Silme / Temizleme (`strip`)
+####  Metadata Silme / Temizleme (`strip`)
 ```bash
 # Tek bir görseldeki tüm metadata ve AI etiketlerini sil (üzerine yazar)
 python3 app.py strip process/a1-wallpaper-f0rf0xsakeffs.jpg
@@ -151,7 +151,7 @@ python3 app.py strip process/a1-wallpaper-f0rf0xsakeffs.jpg --c2pa-only
 python3 app.py strip all
 ```
 
-#### ✏️ Metadata Düzenleme (`edit`)
+####  Metadata Düzenleme (`edit`)
 ```bash
 # Bir görsel için interaktif terminal düzenleyicisini başlat
 python3 app.py edit process/a1-wallpaper-f0rf0xsakeffs.jpg
@@ -173,7 +173,7 @@ python3 app.py edit process/a1-wallpaper-f0rf0xsakeffs.jpg \
 
 ---
 
-## 🔬 Düzenlenebilir Metadata Alanları Referansı
+##  Düzenlenebilir Metadata Alanları Referansı
 
 `edit` komutunda `--set KATEGORİ.ALAN="Değer"` veya `--clear KATEGORİ.ALAN` şeklinde kullanabileceğiniz başlıca alanlar:
 
@@ -206,7 +206,7 @@ python3 app.py edit process/a1-wallpaper-f0rf0xsakeffs.jpg \
 
 ---
 
-## 🧩 Python Modülü Olarak Kullanım (`metadata_engine.py`)
+##  Python Modülü Olarak Kullanım (`metadata_engine.py`)
 
 Kendi Python scriptlerinizde `metadata_engine` modülünü doğrudan içe aktararak kullanabilirsiniz:
 
