@@ -8,7 +8,7 @@ Hem **Terminal (CLI & İnteraktif Menü)** üzerinden hem de **Masaüstü Arayü
 
 ## Temel Özellikler
 
-1. **🤖 Yapay Zeka (AI) ve İçerik Kökeni (Provenance) Tespiti**
+1. ** Yapay Zeka (AI) ve İçerik Kökeni (Provenance) Tespiti**
    - **C2PA / JUMBF (`JPEG APP11 0xFFEB`, `PNG caBX`, `WebP C2PA`):**
      - ISO/IEC 19566-5 JUMBF kutu hiyerarşisini ve CBOR kodlu manifestoları (`c2pa.claim.v2`, `c2pa.actions.v2`, `c2pa.ingredient.v3`, `c2pa.hash.data`) tamamen çözümler.
      - Üretici bilgisini (`Google C2PA Core Generator Library` vb.), yapılan işlemleri (`c2pa.created`: *"Created by Google Generative AI."*, `c2pa.edited`: *"Applied imperceptible SynthID watermark."* vb.) ve IPTC dijital kaynak tiplerini (`trainedAlgorithmicMedia`) gösterir.
@@ -18,7 +18,7 @@ Hem **Terminal (CLI & İnteraktif Menü)** üzerinden hem de **Masaüstü Arayü
      - **ComfyUI:** PNG `prompt` ve `workflow` JSON düğümlerini tespit eder.
      - **Midjourney, DALL-E, Adobe Firefly, NovelAI:** EXIF, XMP ve yorum alanlarındaki AI izlerini yakalar.
 
-2. **🔍 Sosyal Medya ve Standart Metadata Analizi**
+2. ** Sosyal Medya ve Standart Metadata Analizi**
    - **IPTC / Photoshop 8BIM (`APP13 0xFFED`):** Başlık (`ObjectName`), Yazar (`Byline`), Anahtar Kelimeler (`Keywords`), Telif (`CopyrightNotice`) ve özellikle Facebook/Instagram'ın görsellere eklediği `SpecialInstructions` (`FBMD23000...`) takip kodlarını tespit eder.
    - **EXIF (`APP1 0xFFE1` / PNG `eXIf`):** `IFD0`, `ExifIFD`, `GPSIFD` ve `IFD1` tablolarındaki tüm kamera, yazılım, tarih, yazar ve konum verilerini okur.
    - **XMP (`APP1` RDF/XML & PNG `iTXt`):** Dublin Core (`dc:title`, `dc:creator`, `dc:description`, `dc:subject`, `dc:rights`), `xmp:CreatorTool`, `photoshop:Credit` ve `Iptc4xmpExt:DigitalSourceType` alanlarını çözümler.
