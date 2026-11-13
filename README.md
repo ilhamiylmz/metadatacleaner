@@ -127,25 +127,25 @@ Bu komut yerel sunucuyu `http://127.0.0.1:8765` adresinde başlatır ve varsayı
 python3 app.py show
 
 # Tek bir görselin tüm metadata detaylarını göster
-python3 app.py show process/a1-wallpaper-f0rf0xsakeffs.jpg
+python3 app.py show process/a1-wallpaper.jpg
 
 # Çıktıyı JSON formatında al (otomasyon / scriptler için)
-python3 app.py show process/a1-wallpaper-f0rf0xsakeffs.jpg --json
+python3 app.py show process/a1-wallpaper.jpg --json
 ```
 
 ####  Metadata Silme / Temizleme (`strip`)
 ```bash
 # Tek bir görseldeki tüm metadata ve AI etiketlerini sil (üzerine yazar)
-python3 app.py strip process/a1-wallpaper-f0rf0xsakeffs.jpg
+python3 app.py strip process/a1-wallpaper.jpg
 
 # Silmeden önce .bak uzantılı yedek dosya oluştur
-python3 app.py strip process/a1-wallpaper-f0rf0xsakeffs.jpg --backup
+python3 app.py strip process/a1-wallpaper.jpg --backup
 
 # Orijinal dosyaya dokunmadan temizlenmiş görseli farklı bir dosyaya kaydet
-python3 app.py strip process/a1-wallpaper-f0rf0xsakeffs.jpg -o process/a1_clean.jpg
+python3 app.py strip process/a1-wallpaper.jpg -o process/a1_clean.jpg
 
 # Sadece C2PA / AI Content Credentials segmentini kaldır (EXIF/IPTC/XMP kalsın)
-python3 app.py strip process/a1-wallpaper-f0rf0xsakeffs.jpg --c2pa-only
+python3 app.py strip process/a1-wallpaper.jpg --c2pa-only
 
 # process/ klasöründeki TÜM görsellerin metadata verilerini tek seferde temizle
 python3 app.py strip all
@@ -154,7 +154,7 @@ python3 app.py strip all
 ####  Metadata Düzenleme (`edit`)
 ```bash
 # Bir görsel için interaktif terminal düzenleyicisini başlat
-python3 app.py edit process/a1-wallpaper-f0rf0xsakeffs.jpg
+python3 app.py edit process/a1-wallpaper.jpg
 
 # Komut satırı parametreleriyle doğrudan etiket değiştir / ekle / sil:
 python3 app.py edit process/857340270_18344740396256249_8853371540543943019_n.jpg \
@@ -167,7 +167,7 @@ python3 app.py edit process/857340270_18344740396256249_8853371540543943019_n.jp
   --set comment.Comment="Düzenlenmiş görsel"
 
 # C2PA içindeki AI açıklamasını değiştir veya --remove-c2pa ile C2PA'yı tamamen kaldır:
-python3 app.py edit process/a1-wallpaper-f0rf0xsakeffs.jpg \
+python3 app.py edit process/a1-wallpaper.jpg \
   --set "c2pa.Manifest[0].Action[0].description=Custom Description"
 ```
 
@@ -214,14 +214,14 @@ Kendi Python scriptlerinizde `metadata_engine` modülünü doğrudan içe aktara
 from metadata_engine import analyze_image, strip_all_metadata, update_image_metadata
 
 # 1. Görselin tüm metadata ve AI etiketlerini analiz et
-report = analyze_image("process/a1-wallpaper-f0rf0xsakeffs.jpg")
+report = analyze_image("process/a1-wallpaper.jpg")
 print("Karar:", report["ai_summary"]["verdict"])
 print("Rozetler:", report["ai_summary"]["badges"])
 print("C2PA Aksiyonları:", report["c2pa"]["all_actions"])
 
 # 2. Metadata verilerini düzenle
 update_image_metadata(
-    "process/a1-wallpaper-f0rf0xsakeffs.jpg",
+    "process/a1-wallpaper.jpg",
     edits={
         "exif": {"Artist": "Theresa", "Software": "Metadata Studio"},
         "iptc": {"ObjectName": "Sci-Fi Wallpaper", "Keywords": "wallpaper, ai, art"},
@@ -231,7 +231,7 @@ update_image_metadata(
 
 # 3. Tüm metadata verilerini kayıpsız (lossless) olarak temizle
 result = strip_all_metadata(
-    "process/a1-wallpaper-f0rf0xsakeffs.jpg",
+    "process/a1-wallpaper.jpg",
     output_path="process/a1_clean.jpg",
 )
 print(f"Silinen byte: {result['bytes_saved']}, Silinen segmentler: {result['removed_segments']}")
